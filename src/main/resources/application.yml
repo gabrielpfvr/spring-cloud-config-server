@@ -1,0 +1,29 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/gabrielpfvr/config-server-environment.git
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
+          search-paths: '{application}/{profile}'
+          clone-on-start: true
+          defaultLabel: master
+  output:
+    ansi:
+      enabled: ALWAYS
+
+api-token: ${API_TOKEN}
+
+encrypt:
+  key: ${SYMMETRIC_KEY}
+#  keyStore:
+#    location: classpath:/config-server.jks
+#    password: supersecret
+#    alias: keystore
+#    secret: supersecret
